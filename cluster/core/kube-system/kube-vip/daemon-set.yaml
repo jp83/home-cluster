@@ -54,7 +54,6 @@ spec:
       hostNetwork: true
       nodeSelector:
         node-role.kubernetes.io/master: "true"
-#        hp_t630_thinclient: "true"
       serviceAccountName: kube-vip
       tolerations:
         - key: node-role.kubernetes.io/master
@@ -90,8 +89,8 @@ spec:
           env:
             - name: vip_arp
               value: "true"
-#            - name: vip_interface
-#              value: "enp1s0"
+            - name: vip_interface
+              value: "enp1s0"
             - name: port
               value: "6443"
             - name: vip_cidr
