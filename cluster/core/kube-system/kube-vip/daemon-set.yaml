@@ -64,7 +64,7 @@ spec:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: kube-vip
+  name: kube-vip-t630
   namespace: kube-system
   labels:
     app.kubernetes.io/instance: kube-vip
