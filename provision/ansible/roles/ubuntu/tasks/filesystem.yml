@@ -10,6 +10,11 @@
   ansible.builtin.command: swapoff -a
   when: ansible_swaptotal_mb > 0
 
+- name: Delete existing swap if exists
+  file:
+    path: /swap.img
+    state: absent
+
 - name: Disable swap on boot
   ansible.posix.mount:
     name: "{{ item }}"
