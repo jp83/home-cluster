@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-blueiris
+  namespace: networking
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+spec:
+  ingressClassName: "traefik"
+  tls:
+    - hosts:
+        - *host
+  rules:
+  - host: blueiris.${SECRET_DOMAIN}
+    http:
+      paths:
+      - backend:
+          serviceName: external-blueiris
+          servicePort: 81
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-blueiris
+spec:
+  ports:
+  - name: http
+    port: 81
+  type: ExternalName
+  externalName: 192.168.2.100
