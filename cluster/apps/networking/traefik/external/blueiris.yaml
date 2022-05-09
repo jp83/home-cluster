@@ -4,14 +4,14 @@ metadata:
   name: external-blueiris
   namespace: networking
   annotations:
-#    cert-manager.io/cluster-issuer: "letsencrypt-production"
-#    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   ingressClassName: "traefik"
   tls:
     - hosts:
         - blueiris.${SECRET_DOMAIN}
-      #secretName: external-blueiris-tls
+      secretName: external-blueiris-tls
   rules:
   - host: blueiris.${SECRET_DOMAIN}
     http:
