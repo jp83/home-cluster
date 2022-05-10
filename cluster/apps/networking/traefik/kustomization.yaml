@@ -4,4 +4,5 @@ resources:
   - helm-release.yaml
   - dashboard
   - external
+  - middlewares
   - tls-store.yaml
