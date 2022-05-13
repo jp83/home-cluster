@@ -1,0 +1,95 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: plex
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: plex
+      version: 6.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/plex
+      tag: v1.26.0.5715-8cf78dab3
+    env:
+      TZ: "${TIMEZONE}"
+      #ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
+      #ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
+      PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
+    #podSecurityContext:
+    #  supplementalGroups:
+    #    - 44
+    #    - 109
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP:: "${METALLB_PLEX_ADDR}"
+        externalTrafficPolicy: Local
+        annotations:
+          metallb.universe.tf/allow-shared-ip: plex
+        port:
+          port: 32400
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: "plex.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+    persistence:
+      config:
+        enabled: true
+        existingClaim: plex-config-v1
+      media:
+        enabled: true
+        existingClaim: nfs-media-pvc
+        mountPath: /data
+        readOnly: false
+      #backup:
+      #  enabled: true
+      #  type: custom
+      #  volumeSpec:
+      #    nfs:
+      #      server: "${NAS_ADDR}"
+      #      path: /mnt/vol2/Backup/k8s/plex
+      #  mountPath: /config/Backups
+      #  readOnly: false
+      transcode:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+    #affinity:
+    #  nodeAffinity:
+    #    requiredDuringSchedulingIgnoredDuringExecution:
+    #      nodeSelectorTerms:
+    #        - matchExpressions:
+    #            - key: feature.node.kubernetes.io/custom-intel-gpu
+    #              operator: In
+    #              values:
+    #                - "true"
+    #podAnnotations:
+    #  configmap.reloader.stakater.com/reload: "plex-promtail"
+    resources:
+      requests:
+      #  gpu.intel.com/i915: 1
+        cpu: 100m
+        memory: 2000Mi
+      limits:
+      #  gpu.intel.com/i915: 1
+        memory: 10000Mi
