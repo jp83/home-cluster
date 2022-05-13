@@ -26,7 +26,11 @@ spec:
       #ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
       #ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
       PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
-    #podSecurityContext:
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
     #  supplementalGroups:
     #    - 44
     #    - 109
