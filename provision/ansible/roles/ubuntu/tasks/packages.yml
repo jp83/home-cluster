@@ -74,3 +74,9 @@
     daemon_reload: true
     enabled: true
     state: restarted
+
+- name: Enable iSCSI service for OpenEBS
+  ansible.builtin.systemd:
+    name: iscsid
+    state: started
+    enabled: yes
