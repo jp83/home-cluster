@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: sonarr
+      version: 15.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/sonarr
+      tag: v3.0.6.1342
+    env:
+      TZ: "${TIMEZONE}"
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+        hosts:
+          - host: "sonarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+    persistence:
+      config:
+        enabled: true
+        storageClass: cstor-csi-disk
+        size: 3Gi
+        #existingClaim: sonarr-config-v1
+      media:
+        enabled: true
+        existingClaim: nfs-media-pvc
+        #mountPath: /data
+        #readOnly: false
+    resources:
+      requests:
+        cpu: 25m
+        memory: 350Mi
+      limits:
+        memory: 500Mi
