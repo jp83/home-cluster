@@ -43,12 +43,13 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass:: cstor-csi-disk
+        storageClass: cstor-csi-disk
         size: 30Gi
         #existingClaim: nzbget-config-v1
-      media:
+      downloads:
         enabled: true
         existingClaim: nfs-media-pvc
+        subPath: Downloads
         #mountPath: /data
         #readOnly: false
     resources:
