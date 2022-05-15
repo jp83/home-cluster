@@ -8,4 +8,5 @@ resources:
   - plex
   - prowlarr
   - radarr
+  - readarr
   - sonarr
