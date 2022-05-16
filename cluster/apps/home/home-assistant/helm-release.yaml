@@ -23,6 +23,9 @@ spec:
       tag: 2022.5.4
     env:
       TZ: "${TIMEZONE}"
+    envFrom:
+      - secretRef:
+          name: home-assistant-secrets
     #podSecurityContext:
     #  runAsUser: 568
     #  runAsGroup: 568
@@ -33,6 +36,9 @@ spec:
         type: LoadBalancer
         loadBalancerIP:: "${METALLB_HOME_ASSISTANT_ADDR}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8123
         #annotations:
         #  metallb.universe.tf/allow-shared-ip: home-assistant
     ingress:
