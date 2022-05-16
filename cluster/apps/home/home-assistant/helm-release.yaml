@@ -88,7 +88,7 @@ spec:
     #postgresql:
     #  enabled: false
     podAnnotations:
-      secret.reloader.stakater.com/reload: home-assistant
+      secret.reloader.stakater.com/reload: home-assistant-secrets
     addons:
       codeserver:
         enabled: true
@@ -114,7 +114,7 @@ spec:
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
             traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
           hosts:
-            - host: &host-code "hass-code.${SECRET_DOMAIN_NAME}"
+            - host: "hass-code.${SECRET_DOMAIN}"
               paths:
                 - path: /
                   pathType: Prefix
