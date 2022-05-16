@@ -41,9 +41,11 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
-        path: /
         hosts:
-          - "zwave.${SECRET_DOMAIN}"
+          - host: "zwave.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
     securityContext:
       privileged: true
     persistence:
