@@ -103,7 +103,7 @@ spec:
         hosts:
           - "alert-manager.${SECRET_DOMAIN}"
       alertmanagerSpec:
-        replicas: 3
+        replicas: 2
         podAntiAffinity: hard
         storage:
           volumeClaimTemplate:
@@ -233,9 +233,9 @@ spec:
           image: quay.io/thanos/thanos:v0.26.0
           # renovate: datasource=docker depName=quay.io/thanos/thanos
           version: "v0.26.0"
-          objectStorageConfig:
-            name: thanos-objstore-secret
-            key: objstore.yml
+          #objectStorageConfig:
+          #  name: thanos-objstore-secret
+          #  key: objstore.yml
         resources:
           requests:
             cpu: 500m
