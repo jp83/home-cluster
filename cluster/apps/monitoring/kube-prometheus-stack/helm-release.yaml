@@ -154,8 +154,8 @@ spec:
         - 192.168.2.77
       service:
         enabled: true
-        port: 10257
-        targetPort: 10257
+        port: 10252
+        targetPort: 10252
       serviceMonitor:
         enabled: true
         https: true
@@ -168,8 +168,8 @@ spec:
         - 192.168.2.77
       service:
         enabled: true
-        port: 10259
-        targetPort: 10259
+        port: 10251
+        targetPort: 10251
       serviceMonitor:
         enabled: true
         https: true
