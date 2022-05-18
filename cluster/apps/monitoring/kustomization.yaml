@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - goldilocks
   - kube-prometheus-stack
+  - loki
 #  - thanos
   - vpa

@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: loki
-      version: 2.11.0
+      version: 2.11.1
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -29,6 +29,10 @@ spec:
         - host: "loki.${SECRET_DOMAIN}"
           paths:
             - /
+    persistence:
+      enabled: true
+      storageClassName: cstor-csi-disk
+      size: 10Gi
     serviceMonitor:
       enabled: true
     # extraArgs:
