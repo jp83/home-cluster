@@ -20,11 +20,10 @@ spec:
   values:
     ingress:
       enabled: true
+      ingressClassName: "traefik"
       annotations:
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
       hosts:
         - host: "loki.${SECRET_DOMAIN}"
           paths:
