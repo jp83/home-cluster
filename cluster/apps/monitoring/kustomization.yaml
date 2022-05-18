@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - goldilocks
   - grafana
+  - influxdb
   - kube-prometheus-stack
   - loki
 #  - thanos
