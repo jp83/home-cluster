@@ -3,6 +3,7 @@
 # Trash
 .DS_Store
 Thumbs.db
+*.rm
 # k8s
 kubeconfig
 # vscode-sops
