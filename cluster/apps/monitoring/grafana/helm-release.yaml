@@ -94,10 +94,10 @@ spec:
           - name: Loki
             orgId: 1
         datasources:
-          - name: InfluxDB (outside)
+          - name: InfluxDB
             type: influxdb
             access: proxy
-            url: https://influx
+            url: http://influxdb.monitoring.svc.cluster.local:8086
           - name: Prometheus
             type: prometheus
             access: proxy
