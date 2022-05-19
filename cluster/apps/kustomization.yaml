@@ -8,4 +8,5 @@ resources:
   - media
   - monitoring
   - networking
+  - security
   - system-upgrade
