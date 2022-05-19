@@ -107,10 +107,11 @@ spec:
 
     postgresql:
       enabled: true
-      postgresqlPassword:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_POSTGRESQL__PASSWORD
+      auth:
+        postgresqPassword:
+          secretKeyRef:
+            name: authentik-secrets
+            key: AUTHENTIK_POSTGRESQL__PASSWORD
       persistence:
         enabled: true
         storageClass: cstor-csi-disk
