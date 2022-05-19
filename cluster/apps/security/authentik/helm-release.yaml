@@ -107,25 +107,8 @@ spec:
 
     postgresql:
       enabled: true
-      auth:
-        postgresqPassword:
-          secretKeyRef:
-            name: authentik-secrets
-            key: AUTHENTIK_POSTGRESQL__PASSWORD
-      persistence:
-        enabled: true
-        storageClass: cstor-csi-disk
-        accessModes:
-        - ReadWriteOnce
-        size: 8Gi
     redis:
       enabled: true
-#      persistence:
-#        enabled: true
-#        storageClass: cstor-csi-disk
-#        accessModes:
-#        - ReadWriteOnce
-#        size: 8Gi
 
     global:
       storageClass: cstor-csi-disk
