@@ -63,42 +63,42 @@ spec:
         secretKeyRef:
           name: authentik-secrets
           key: AUTHENTIK_SECRET_KEY
-      AUTHENTIK_POSTGRESQL__HOST:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_POSTGRESQL__HOST
-      AUTHENTIK_POSTGRESQL__NAME:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_POSTGRESQL__NAME
-      AUTHENTIK_POSTGRESQL__USER:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_POSTGRESQL__USER
+      #AUTHENTIK_POSTGRESQL__HOST:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_POSTGRESQL__HOST
+      #AUTHENTIK_POSTGRESQL__NAME:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_POSTGRESQL__NAME
+      #AUTHENTIK_POSTGRESQL__USER:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_POSTGRESQL__USER
       AUTHENTIK_POSTGRESQL__PASSWORD:
         secretKeyRef:
           name: authentik-secrets
           key: AUTHENTIK_POSTGRESQL__PASSWORD
-      AUTHENTIK_REDIS__HOST:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_REDIS__HOST
-      AUTHENTIK_REDIS__CACHE_DB:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_REDIS__CACHE_DB
-      AUTHENTIK_REDIS__MESSAGE_QUEUE_DB:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_REDIS__MESSAGE_QUEUE_DB
-      AUTHENTIK_REDIS__WS_DB:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_REDIS__WS_DB
-      AUTHENTIK_REDIS__OUTPUT_SESSION_DB:
-        secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_REDIS__OUTPUT_SESSION_DB
+      #AUTHENTIK_REDIS__HOST:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_REDIS__HOST
+      #AUTHENTIK_REDIS__CACHE_DB:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_REDIS__CACHE_DB
+      #AUTHENTIK_REDIS__MESSAGE_QUEUE_DB:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_REDIS__MESSAGE_QUEUE_DB
+      #AUTHENTIK_REDIS__WS_DB:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_REDIS__WS_DB
+      #AUTHENTIK_REDIS__OUTPUT_SESSION_DB:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_REDIS__OUTPUT_SESSION_DB
 
     authentik:
       log_level: debug
