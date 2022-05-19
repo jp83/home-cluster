@@ -107,8 +107,20 @@ spec:
 
     postgresql:
       enabled: true
+      persistence:
+        enabled: true
+        storageClass: cstor-csi-disk
+        accessModes:
+        - ReadWriteOnce
+        size: 8Gi
     redis:
       enabled: true
+      persistence:
+        enabled: true
+        storageClass: cstor-csi-disk
+        accessModes:
+        - ReadWriteOnce
+        size: 8Gi
 
     prometheus:
       rules:
