@@ -107,6 +107,10 @@ spec:
 
     postgresql:
       enabled: true
+      postgresqlPassword:
+        secretKeyRef:
+          name: authentik-secrets
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
       persistence:
         enabled: true
         storageClass: cstor-csi-disk
@@ -115,12 +119,15 @@ spec:
         size: 8Gi
     redis:
       enabled: true
-      persistence:
-        enabled: true
-        storageClass: cstor-csi-disk
-        accessModes:
-        - ReadWriteOnce
-        size: 8Gi
+#      persistence:
+#        enabled: true
+#        storageClass: cstor-csi-disk
+#        accessModes:
+#        - ReadWriteOnce
+#        size: 8Gi
+
+    global:
+      storageClass: cstor-csi-disk
 
     prometheus:
       rules:
