@@ -77,8 +77,8 @@ spec:
       #    key: AUTHENTIK_POSTGRESQL__USER
       AUTHENTIK_POSTGRESQL__PASSWORD:
         secretKeyRef:
-          name: authentik-secrets
-          key: AUTHENTIK_POSTGRESQL__PASSWORD
+          name: authentik-postresql
+          key: password
       #AUTHENTIK_REDIS__HOST:
       #  secretKeyRef:
       #    name: authentik-secrets
@@ -107,6 +107,8 @@ spec:
 
     postgresql:
       enabled: true
+      auth:
+        existingSecret: authentik-postresql
     redis:
       enabled: true
 
