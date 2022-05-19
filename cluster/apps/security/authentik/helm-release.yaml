@@ -75,10 +75,10 @@ spec:
       #  secretKeyRef:
       #    name: authentik-secrets
       #    key: AUTHENTIK_POSTGRESQL__USER
-      AUTHENTIK_POSTGRESQL__PASSWORD:
-        secretKeyRef:
-          name: authentik-postresql
-          key: password
+      #AUTHENTIK_POSTGRESQL__PASSWORD:
+      #  secretKeyRef:
+      #    name: authentik-secrets
+      #    key: AUTHENTIK_POSTGRESQL__PASSWORD
       #AUTHENTIK_REDIS__HOST:
       #  secretKeyRef:
       #    name: authentik-secrets
@@ -107,8 +107,6 @@ spec:
 
     postgresql:
       enabled: true
-      auth:
-        existingSecret: authentik-postresql
     redis:
       enabled: true
 
@@ -122,6 +120,15 @@ spec:
         create: true
 
   valuesFrom:
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD 
+      targetPath: authentik.postgresql.password
+    - kind: Secret
+      name: authentik-secrets
+      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD 
+      targetPath: postgresql.postgresqlPassword
+      optional: false
     - kind: Secret
       name: authentik-secrets
       valuesKey: AUTHENTIK_GEOIP_ACCOUNT_ID
