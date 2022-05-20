@@ -29,13 +29,21 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          external-dns.alpha.kubernetes.io/target: "home.${SECRET_PUBLIC_DOMAIN}"
+          external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         #  traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - host: "requests.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+          - host: "plexrequests.${SECRET_DOMAIN}"
+          - host: "requests.${SECRET_ROOT_DOMAIN}"
+          - host: "plexrequests.${SECRET_ROOT_DOMAIN}"
+        tls:
+          - hosts:
+              - "requests.${SECRET_DOMAIN}" 
+              - "plexrequests.${SECRET_DOMAIN}" 
+              - "requests.${SECRET_ROOT_DOMAIN}" 
+              - "plexrequests.${SECRET_ROOT_DOMAIN}" 
     persistence:
       config:
         enabled: true
