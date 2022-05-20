@@ -5,7 +5,7 @@ metadata:
   name: "wildcard-${SECRET_ROOT_DOMAIN/./-}"
   namespace: networking
 spec:
-  secretName: "${SECRET_ROOT_DOMAIN/./-}-tls"
+  secretName: "wildcard-${SECRET_ROOT_DOMAIN/./-}-tls"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
