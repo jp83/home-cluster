@@ -54,6 +54,10 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+          - host: "plexrequests.home.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
     persistence:
       config:
         enabled: true
