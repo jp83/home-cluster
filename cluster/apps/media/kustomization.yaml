@@ -5,6 +5,7 @@ resources:
   - lidarr
   - nfs-media-pv.yaml
   - nzbget
+  - overseer
   - plex
   - prowlarr
   - radarr
