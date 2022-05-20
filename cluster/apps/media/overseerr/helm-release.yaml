@@ -35,13 +35,27 @@ spec:
         #  traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - host: "requests.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
           - host: "plexrequests.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
           - host: "requests.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
           - host: "plexrequests.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
               - "requests.${SECRET_DOMAIN}" 
               - "plexrequests.${SECRET_DOMAIN}" 
+          - secretName: overseerr-tls
+            hosts:
               - "requests.${SECRET_ROOT_DOMAIN}" 
               - "plexrequests.${SECRET_ROOT_DOMAIN}" 
     persistence:
