@@ -50,14 +50,13 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-        tls:
-          #- hosts:
-          #    - "requests.${SECRET_DOMAIN}" 
-          #    - "plexrequests.${SECRET_DOMAIN}" 
-          - secretName: overseerr-tls
-            hosts:
-              - "requests.${SECRET_ROOT_DOMAIN}" 
-              - "plexrequests.${SECRET_ROOT_DOMAIN}" 
+        # tls:
+        #   - secretName: overseerr-tls
+        #     hosts:
+        #       - "requests.${SECRET_DOMAIN}" 
+        #       - "plexrequests.${SECRET_DOMAIN}" 
+        #       - "requests.${SECRET_ROOT_DOMAIN}" 
+        #       - "plexrequests.${SECRET_ROOT_DOMAIN}" 
     persistence:
       config:
         enabled: true
