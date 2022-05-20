@@ -51,9 +51,9 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
-              - "requests.${SECRET_DOMAIN}" 
-              - "plexrequests.${SECRET_DOMAIN}" 
+          #- hosts:
+          #    - "requests.${SECRET_DOMAIN}" 
+          #    - "plexrequests.${SECRET_DOMAIN}" 
           - secretName: overseerr-tls
             hosts:
               - "requests.${SECRET_ROOT_DOMAIN}" 
