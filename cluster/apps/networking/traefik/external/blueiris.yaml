@@ -5,6 +5,8 @@ metadata:
   name: external-blueiris
   namespace: networking
   annotations:
+    external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
+    external-dns/is-public: "true"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   ingressClassName: "traefik"
