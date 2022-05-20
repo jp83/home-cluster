@@ -34,6 +34,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         #  traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
+          - host: "overseerr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
           - host: "requests.${SECRET_DOMAIN}"
             paths:
               - path: /
@@ -50,13 +54,6 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-        # tls:
-        #   - secretName: overseerr-tls
-        #     hosts:
-        #       - "requests.${SECRET_DOMAIN}" 
-        #       - "plexrequests.${SECRET_DOMAIN}" 
-        #       - "requests.${SECRET_ROOT_DOMAIN}" 
-        #       - "plexrequests.${SECRET_ROOT_DOMAIN}" 
     persistence:
       config:
         enabled: true
