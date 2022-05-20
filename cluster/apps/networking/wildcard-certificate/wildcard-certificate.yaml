@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-"${SECRET_ROOT_DOMAIN/./-}"
+  name: "wildcard-${SECRET_ROOT_DOMAIN/./-}"
   namespace: networking
 spec:
   secretName: "${SECRET_ROOT_DOMAIN/./-}-tls"
