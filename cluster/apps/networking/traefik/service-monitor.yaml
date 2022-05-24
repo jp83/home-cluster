@@ -16,5 +16,5 @@ spec:
     matchNames:
       - networking
   endpoints:
-    - port: traefik
+    - port: metrics
       path: /metrics
