@@ -77,6 +77,7 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
+        sizeLimit: 8Gi
     #affinity:
     #  nodeAffinity:
     #    requiredDuringSchedulingIgnoredDuringExecution:
