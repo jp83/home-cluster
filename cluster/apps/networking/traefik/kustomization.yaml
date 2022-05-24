@@ -6,4 +6,5 @@ resources:
   - dashboard
   - external
   - middlewares
+  - service-monitor.yaml
   - tls-store.yaml
