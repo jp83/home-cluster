@@ -154,11 +154,11 @@ spec:
         - 192.168.2.77
       service:
         enabled: true
-        port: 10252
-        targetPort: 10252
+        port: 10257
+        targetPort: 10257
       serviceMonitor:
         enabled: true
-        https: false
+        https: true
         insecureSkipVerify: true
     kubeScheduler:
       enabled: true
@@ -168,11 +168,11 @@ spec:
         - 192.168.2.77
       service:
         enabled: true
-        port: 10251
-        targetPort: 10251
+        port: 10259
+        targetPort: 10259
       serviceMonitor:
         enabled: true
-        https: false
+        https: true
         insecureSkipVerify: true
     kubeProxy:
       enabled: true
@@ -214,7 +214,7 @@ spec:
       #  hosts:
       #    - "thanos-sidecar.${SECRET_DOMAIN}"
       prometheusSpec:
-        replicas: 2
+        replicas: 1
         replicaExternalLabelName: "replica"
         podAntiAffinity: hard
         retentionSize: "6GB"
@@ -239,8 +239,8 @@ spec:
         #  # renovate: datasource=docker depName=quay.io/thanos/thanos
         #  version: "v0.26.0"
         #  #objectStorageConfig:
-        #  #  name: thanos-objstore-secret
-        #  #  key: objstore.yml
+          #  name: thanos-objstore-secret
+          #  key: objstore.yml
         resources:
           requests:
             cpu: 500m
