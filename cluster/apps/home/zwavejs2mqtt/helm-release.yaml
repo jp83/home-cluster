@@ -70,6 +70,10 @@ spec:
                   operator: In
                   values:
                     - "true"
+    tolerations:
+      - key: "thin-client"
+        operator: "Exists"
+        effect: "NoExecute"
     resources:
       requests:
         cpu: 100m
