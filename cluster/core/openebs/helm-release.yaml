@@ -20,5 +20,10 @@ spec:
       enabled: false
     cstor:
       enabled: true
+      csiNode:
+        tolerations:
+        - key: "thin-client"
+          operator: "Exists"
+          effect: "NoExecute"
     openebs-ndm:
       enabled: true

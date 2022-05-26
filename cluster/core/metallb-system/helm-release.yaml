@@ -16,6 +16,11 @@ spec:
         name: metallb-charts
         namespace: flux-system
   values:
+    speaker:
+      tolerations:
+        - key: "thin-client"
+          operator: "Exists"
+          effect: "NoExecute"
     configInline:
       address-pools:
         - name: default
