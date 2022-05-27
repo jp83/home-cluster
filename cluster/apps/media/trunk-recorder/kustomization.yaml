@@ -1,28 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: GitRepository
-metadata:
-  name: trunk-recorder-config
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  #url: https://github.com/jp83/trunk-recorder-config.git
-  url: ssh://git@github.com:22/jp83/trunk-recorder-config.git
-  #url: ssh://jp83@github.com/trunk-recorder-config.git
-  ref:
-    branch: main
-  secretRef:
-    name: trunk-recorder-config-auth
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: trunk-recorder
-  namespace: flux-system
-spec:
-  interval: 10m0s
-  path: .
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: trunk-recorder-config
+resources:
+  - git-repo.yaml
