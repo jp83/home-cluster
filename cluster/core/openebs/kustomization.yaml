@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - cspc.yaml
   - cstor-csi-disk.yaml
+  - snapshot-class.yaml
