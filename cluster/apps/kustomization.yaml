@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - default
   - home
+  - kasten-io
   - kube-system
   - media
   - monitoring
