@@ -39,6 +39,7 @@ spec:
         #  external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         #  external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - host: "esphome.${SECRET_DOMAIN}"
             paths:
