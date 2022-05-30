@@ -29,13 +29,13 @@ spec:
     eula:
       accept: true
       company: personal
-      email: ${SECRET_EMAIL}
+      email: jp83@users.noreply.github.com
     global:
       persistence:
         storageClass: cstor-csi-disk
-    #auth:
-    #  tokenAuth:
-    #    enabled: true
+    auth:
+      tokenAuth:
+        enabled: true
     clusterName: k3s-home
     ingress:
       create: true
