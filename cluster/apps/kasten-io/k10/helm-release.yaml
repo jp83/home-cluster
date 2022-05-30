@@ -39,7 +39,8 @@ spec:
     clusterName: k3s-home
     ingress:
       create: true
-      class: traefik
+      #class: traefik
+      ingressClassName: "traefik"
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
