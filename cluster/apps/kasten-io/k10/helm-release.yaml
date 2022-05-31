@@ -59,3 +59,13 @@ spec:
       #  secretName: "${SECRET_PUBLIC_DOMAIN/./-}-tls"
     grafana:
       enabled: false
+  postRenderers:
+  - kustomize:
+      patchesJson6902:
+      - target:
+          kind: Ingress
+          name: k10-ingress
+        patch:
+        - op: add
+          path: /spec/ingressClassName
+          value: traefik
