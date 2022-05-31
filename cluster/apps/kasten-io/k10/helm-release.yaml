@@ -45,7 +45,7 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
       host: "k10.${SECRET_DOMAIN}"
-      urlPath: /k10
+      #urlPath: /k10
       pathType: Prefix
       #hosts:
       #    - host: "k10.${SECRET_DOMAIN}"
