@@ -44,16 +44,16 @@ spec:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
-      host: "k10.${SECRET_DOMAIN}"
-      #urlPath: /k10
-      pathType: Prefix
+      host: &host "k10.${SECRET_DOMAIN}"
+      urlPath: k10
+      #pathType: Prefix
       #hosts:
       #    - host: "k10.${SECRET_DOMAIN}"
       #      paths:
       #        - path: /
       #          pathType: Prefix
-      #hosts:
-      #  - *host
+      hosts:
+        - *host
       #tls:
       #  enabled: true
       #  secretName: "${SECRET_PUBLIC_DOMAIN/./-}-tls"
