@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: "${NAS_ADDR}"
-    path: /mnt/vol2/k10
+    path: /mnt/vol2/Backup/k10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
