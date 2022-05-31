@@ -42,6 +42,7 @@ spec:
       class: traefik
       ingressClassName: "traefik"
       annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
       host: &host "k10.${SECRET_DOMAIN}"
@@ -54,8 +55,9 @@ spec:
       #          pathType: Prefix
       hosts:
         - *host
-      #tls:
-      #  enabled: true
+      tls:
+        enabled: true
+        secretName: "k10-tls"
       #  secretName: "${SECRET_PUBLIC_DOMAIN/./-}-tls"
     grafana:
       enabled: false
