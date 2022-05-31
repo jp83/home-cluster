@@ -11,6 +11,14 @@ spec:
         profile:
           name: media
           namespace: kasten-io
+        filters:
+          includeResources: []
+          excludeResources:
+            - group: ""
+              version: ""
+              resource: persistentvolumeclaims
+              name: nfs-media-pvc
+              matchExpressions: []
   frequency: '@hourly'
   retention:
     hourly: 4
