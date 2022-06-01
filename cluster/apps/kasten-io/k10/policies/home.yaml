@@ -11,6 +11,14 @@ spec:
         profile:
           name: home
           namespace: kasten-io
+    - action: export
+      exportParameters:
+        frequency: "@daily"
+        profile:
+          name: home
+          namespace: kasten-io
+        exportData:
+          enabled: true
   frequency: '@hourly'
   retention:
     hourly: 4

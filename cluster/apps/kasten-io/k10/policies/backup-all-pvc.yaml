@@ -6,6 +6,7 @@ metadata:
 spec:
   comment: Policy to backup all resources daily.  Daily snapshot/backup
   frequency: "@daily"
+  paused: true
   subFrequency:
     minutes:
       - 0

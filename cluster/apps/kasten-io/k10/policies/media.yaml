@@ -19,6 +19,14 @@ spec:
               resource: persistentvolumeclaims
               name: nfs-media-pvc
               matchExpressions: []
+    - action: export
+      exportParameters:
+        frequency: "@daily"
+        profile:
+          name: media
+          namespace: kasten-io
+        exportData:
+          enabled: true
   frequency: '@hourly'
   retention:
     hourly: 4
