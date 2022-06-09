@@ -2,14 +2,14 @@
 apiVersion: config.kio.kasten.io/v1alpha1
 kind: Profile
 metadata:
-  name: media
+  name: exports
   namespace: kasten-io
 spec:
   locationSpec:
     type: FileStore
     fileStore:
-      claimName: k10-backups
-      path: media
+      claimName: nfs-backup-k10-pvc
+      path: exports
     credential:
       secretType: ""
       secret:

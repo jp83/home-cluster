@@ -8,7 +8,7 @@ spec:
   locationSpec:
     type: FileStore
     fileStore:
-      claimName: k10-backups
+      claimName: nfs-backup-k10-pvc
       path: k10-disaster-recovery
     credential:
       secretType: ""

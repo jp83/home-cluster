@@ -2,14 +2,14 @@
 kind: Policy
 apiVersion: config.kio.kasten.io/v1alpha1
 metadata:
-  name: media
+  name: daily-export
   namespace: kasten-io
 spec:
   actions:
     - action: backup
       backupParameters:
         profile:
-          name: media
+          name: exports
           namespace: kasten-io
         filters:
           includeResources: []
@@ -23,14 +23,24 @@ spec:
       exportParameters:
         frequency: "@daily"
         profile:
-          name: media
+          name: exports
           namespace: kasten-io
         exportData:
           enabled: true
-  frequency: '@hourly'
+  frequency: '@daily'
+  subFrequency:
+    minutes:
+      - 0
+    hours:
+      - 5
+    weekdays:
+      - 0
+    days:
+      - 1
+    months:
+      - 1
   retention:
-    hourly: 4
-    daily: 1
+    daily: 2
     monthly: 1
     weekly: 1
     yearly: 1
@@ -39,4 +49,5 @@ spec:
       - key: k10.kasten.io/appNamespace
         operator: In
         values:
+          - home
           - media
