@@ -10,7 +10,7 @@ spec:
         kubernetes.io/hostname: "k3s-node-0"
       dataRaidGroups:
         - blockDevices:
-            - blockDeviceName: "blockdevice-ad9fb31fb53d9165150eeea2dea6cf49"
+            - blockDeviceName: "blockdevice-5a2b6c7ab5f87ebfbc63d229bcc2a646"
       poolConfig:
         dataRaidGroupType: "stripe"
     - nodeSelector:
