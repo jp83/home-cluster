@@ -13,14 +13,14 @@ spec:
   rules:
     - host: blueiris.${SECRET_ROOT_DOMAIN}
       http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: external-blueiris
-              port:
-                number: 81
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: external-blueiris
+                port:
+                  number: 81
     - host: blueiris.home.${SECRET_ROOT_DOMAIN}
       http:
         paths:
