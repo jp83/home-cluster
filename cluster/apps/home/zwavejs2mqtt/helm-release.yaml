@@ -52,7 +52,6 @@ spec:
       config:
         enabled: true
         storageClass: cstor-csi-disk
-        #existingClaim: zwavejs2mqtt-config-v1
         mountPath: "/usr/src/app/store"
         size: 1Gi
         skipuninstall: true

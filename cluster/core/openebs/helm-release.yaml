@@ -22,8 +22,8 @@ spec:
       enabled: true
       csiNode:
         tolerations:
-        - key: "thin-client"
-          operator: "Exists"
-          effect: "NoExecute"
+          - key: "thin-client"
+            operator: "Exists"
+            effect: "NoExecute"
     openebs-ndm:
       enabled: true

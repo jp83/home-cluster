@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: esphome
-  #name: &app esphome
   namespace: home
 spec:
   interval: 15m
@@ -28,8 +27,6 @@ spec:
   install:
     createNamespace: true
   values:
-    #global:
-    #  nameOverride: *app
     image:
       repository: ghcr.io/esphome/esphome
       tag: 2022.5.1
@@ -38,21 +35,13 @@ spec:
       ESPHOME_DASHBOARD_USE_PING: "true"
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
-    #envFrom:
-    #  - secretRef:
-    #      name: esphome-secrets
-    #service:
-    #  main:
-    #    ports:
-    #      http:
-    #        port: 6052
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-        #  external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-        #  external-dns/is-public: "true"
+        #   external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        #   external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
@@ -64,7 +53,6 @@ spec:
       config:
         enabled: true
         storageClass: cstor-csi-disk
-    #    existingClaim: esphome-config-v1
     resources:
       requests:
         cpu: 100m

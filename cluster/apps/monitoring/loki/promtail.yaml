@@ -18,13 +18,13 @@ spec:
       interval: 5m
   values:
     tolerations:
-    - key: "arm"
-      operator: "Exists"
-    - key: "node-role.kubernetes.io/master"
-      operator: "Exists"
-    - key: "thin-client"
-      operator: "Exists"
-      effect: "NoExecute"
+      - key: "arm"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+      - key: "thin-client"
+        operator: "Exists"
+        effect: "NoExecute"
     config:
       lokiAddress: http://loki:3100/loki/api/v1/push
       snippets:

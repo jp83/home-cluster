@@ -45,13 +45,10 @@ spec:
         enabled: true
         storageClass: cstor-csi-disk
         size: 30Gi
-        #existingClaim: nzbget-config-v1
       downloads:
         enabled: true
         existingClaim: nfs-media-pvc
         subPath: Downloads
-        #mountPath: /data
-        #readOnly: false
     resources:
       requests:
         cpu: 25m

@@ -79,4 +79,4 @@
   ansible.builtin.systemd:
     name: iscsid
     state: started
-    enabled: yes
+    enabled: true

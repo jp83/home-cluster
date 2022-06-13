@@ -23,9 +23,9 @@ spec:
     remediation:
       retries: 5
   values:
-    #image:
-    # repository: ghcr.io/k8s-at-home/grafana
-    # tag: v8.5.2
+    # image:
+    #   repository: ghcr.io/k8s-at-home/grafana
+    #   tag: v8.5.2
     replicas: 1
     env:
       GF_EXPLORE_ENABLED: true
@@ -48,7 +48,7 @@ spec:
       storageClassName: "cstor-csi-disk"
       size: 10Gi
       accessModes:
-      - ReadWriteOnce
+        - ReadWriteOnce
     admin:
       existingSecret: grafana-admin-creds
     grafana.ini:
@@ -145,7 +145,7 @@ spec:
           gnetId: 12175
           revision: 5
           datasource: Prometheus
-        #Ref: https://grafana.com/grafana/dashboards/2842
+        # Ref: https://grafana.com/grafana/dashboards/2842
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
           datasource: Prometheus

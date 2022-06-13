@@ -23,17 +23,17 @@ spec:
       tag: v1.26.0.5715-8cf78dab3
     env:
       TZ: "${TIMEZONE}"
-      #ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
-      #ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
+      # ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
+      # ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
       PLEX_CLAIM: "${SECRET_PLEX_CLAIM_TOKEN}"
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
-    #  supplementalGroups:
-    #    - 44
-    #    - 109
+    #   supplementalGroups:
+    #     - 44
+    #     - 109
     service:
       main:
         type: LoadBalancer
@@ -64,31 +64,31 @@ spec:
         enabled: true
         existingClaim: nfs-media-pvc
         readOnly: false
-      #backup:
-      #  enabled: true
-      #  type: custom
-      #  volumeSpec:
-      #    nfs:
-      #      server: "${NAS_ADDR}"
-      #      path: /mnt/vol2/Backup/k8s/plex
-      #  mountPath: /config/Backups
-      #  readOnly: false
+      # backup:
+      #   enabled: true
+      #   type: custom
+      #   volumeSpec:
+      #     nfs:
+      #       server: "${NAS_ADDR}"
+      #       path: /mnt/vol2/Backup/k8s/plex
+      #   mountPath: /config/Backups
+      #   readOnly: false
       transcode:
         enabled: true
         type: emptyDir
         medium: Memory
         sizeLimit: 8Gi
-    #affinity:
-    #  nodeAffinity:
-    #    requiredDuringSchedulingIgnoredDuringExecution:
-    #      nodeSelectorTerms:
-    #        - matchExpressions:
-    #            - key: feature.node.kubernetes.io/custom-intel-gpu
-    #              operator: In
-    #              values:
-    #                - "true"
-    #podAnnotations:
-    #  configmap.reloader.stakater.com/reload: "plex-promtail"
+    # affinity:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #         - matchExpressions:
+    #             - key: feature.node.kubernetes.io/custom-intel-gpu
+    #               operator: In
+    #               values:
+    #                 - "true"
+    # podAnnotations:
+    #   configmap.reloader.stakater.com/reload: "plex-promtail"
     resources:
       requests:
       #  gpu.intel.com/i915: 1
@@ -105,13 +105,13 @@ spec:
           tag: 2.5.0
         loki: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
         logs:
-        - name: promtail/plex
-          path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
-        - name: promtail/plex/plugins
-          path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
+          - name: promtail/plex
+            path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
+          - name: promtail/plex/plugins
+            path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
         volumeMounts:
-        - name: config
-          mountPath: /config
-          readOnly: true
+          - name: config
+            mountPath: /config
+            readOnly: true
         securityContext:
           runAsUser: 0

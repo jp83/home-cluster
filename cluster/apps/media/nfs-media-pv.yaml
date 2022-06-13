@@ -14,12 +14,12 @@ spec:
     server: ${NAS_ADDR}
     path: "/mnt/vol2/Media"
   mountOptions:
-  - nfsvers=3
-  - tcp
-  - intr
-  - hard
-  - noatime
-  - nodiratime
+    - nfsvers=3
+    - tcp
+    - intr
+    - hard
+    - noatime
+    - nodiratime
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

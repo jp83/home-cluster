@@ -39,36 +39,29 @@ spec:
     clusterName: k3s-home
     ingress:
       create: true
-      #class: traefik
-      #ingressClassName: "traefik"
-      #doesn't work see below post render
+      # class: traefik
+      # ingressClassName: "traefik"
+      # doesn't work see below post render
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
       host: &host "k10.${SECRET_DOMAIN}"
       urlPath: k10
-      #pathType: Prefix
-      #hosts:
-      #    - host: "k10.${SECRET_DOMAIN}"
-      #      paths:
-      #        - path: /
-      #          pathType: Prefix
       hosts:
         - *host
       tls:
         enabled: true
         secretName: "k10-tls"
-      #  secretName: "${SECRET_PUBLIC_DOMAIN/./-}-tls"
     grafana:
       enabled: false
   postRenderers:
-  - kustomize:
+    - kustomize:
       patchesJson6902:
-      - target:
+        - target:
           kind: Ingress
           name: k10-ingress
-        patch:
+      patch:
         - op: add
           path: /spec/ingressClassName
           value: traefik

@@ -26,9 +26,9 @@ spec:
     fullnameOverride: prom-stack
     nodeExporter:
     tolerations:
-        - key: "thin-client"
-          operator: "Exists"
-          effect: "NoExecute"
+      - key: "thin-client"
+        operator: "Exists"
+        effect: "NoExecute"
     alertmanager:
       config:
         global:
@@ -205,19 +205,19 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
-      #thanosService:
-      #  enabled: true
-      #thanosServiceMonitor:
-      #  enabled: true
-      #thanosIngress:
-      #  enabled: true
-      #  pathType: Prefix
-      #  ingressClassName: "traefik"
-      #  annotations:
-      #    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      #    traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
-      #  hosts:
-      #    - "thanos-sidecar.${SECRET_DOMAIN}"
+      # thanosService:
+      #   enabled: true
+      # thanosServiceMonitor:
+      #   enabled: true
+      # thanosIngress:
+      #   enabled: true
+      #   pathType: Prefix
+      #   ingressClassName: "traefik"
+      #   annotations:
+      #     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      #     traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+      #   hosts:
+      #     - "thanos-sidecar.${SECRET_DOMAIN}"
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
@@ -239,13 +239,13 @@ spec:
                   storage: 10Gi
             metadata:
               name: prom
-        #thanos:
-        #  image: quay.io/thanos/thanos:v0.26.0
-        #  # renovate: datasource=docker depName=quay.io/thanos/thanos
-        #  version: "v0.26.0"
-        #  #objectStorageConfig:
-          #  name: thanos-objstore-secret
-          #  key: objstore.yml
+        # thanos:
+        #   image: quay.io/thanos/thanos:v0.26.0
+        #   # renovate: datasource=docker depName=quay.io/thanos/thanos
+        #   version: "v0.26.0"
+        #   objectStorageConfig:
+        #     name: thanos-objstore-secret
+        #     key: objstore.yml
         resources:
           requests:
             cpu: 500m

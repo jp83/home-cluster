@@ -31,29 +31,29 @@ spec:
           params:
             nodeAffinityType:
               - requiredDuringSchedulingIgnoredDuringExecution
-#        RemovePodsViolatingTopologySpreadConstraint:
-#          enabled: true
-#          params:
-#            includeSoftConstraints: true
+        # RemovePodsViolatingTopologySpreadConstraint:
+        #   enabled: true
+        #   params:
+        #     includeSoftConstraints: true
         RemovePodsViolatingInterPodAntiAffinity:
           enabled: true
           params:
             nodeFit: true
         LowNodeUtilization:
           enabled: false
-#        RemoveFailedPods:
-#          enabled: true
-#          params:
-#            failedPods:
-#              includingInitContainers: true
-#              excludeOwnerKinds:
-#                - "Job"
-#              minPodLifetimeSeconds: 3600
-#        RemovePodsHavingTooManyRestarts:
-#          enabled: true
-#          params:
-#            podsHavingTooManyRestarts:
-#              podRestartThreshold: 100
-#              includingInitContainers: true
+        # RemoveFailedPods:
+        #   enabled: true
+        #   params:
+        #     failedPods:
+        #       includingInitContainers: true
+        #       excludeOwnerKinds:
+        #         - "Job"
+        #       minPodLifetimeSeconds: 3600
+        # RemovePodsHavingTooManyRestarts:
+        #   enabled: true
+        #   params:
+        #     podsHavingTooManyRestarts:
+        #       podRestartThreshold: 100
+        #       includingInitContainers: true
     podAnnotations:
       configmap.reloader.stakater.com/reload: "descheduler"

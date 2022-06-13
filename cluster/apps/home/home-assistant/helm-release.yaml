@@ -26,11 +26,6 @@ spec:
     envFrom:
       - secretRef:
           name: home-assistant-secrets
-    #podSecurityContext:
-    #  runAsUser: 568
-    #  runAsGroup: 568
-    #  fsGroup: 568
-    #  fsGroupChangePolicy: "OnRootMismatch"
     service:
       main:
         type: LoadBalancer
@@ -39,8 +34,8 @@ spec:
         ports:
           http:
             port: 8123
-        #annotations:
-        #  metallb.universe.tf/allow-shared-ip: home-assistant
+        # annotations:
+        #   metallb.universe.tf/allow-shared-ip: home-assistant
     ingress:
       main:
         enabled: true
@@ -62,31 +57,31 @@ spec:
       enabled: false
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
-    #probes:
-    #  liveness:
-    #    enabled: false
-    #  readiness:
-    #    enabled: false
-    #  startup:
-    #    enabled: false
-    #mariadb:
-    #  enabled: true
-    #  image:
-    #    repository: bitnami/mariadb
-    #    tag: 10.6.7-debian-10-r70
-    #  architecture: standalone
-    #  auth:
-    #    database: home-assistant
-    #    username: home-assistant
-    #    password: home-assistant-pass
-    #    rootPassword: home-assistantrootpass
-    #    existingSecret:
-    #  primary:
-    #    persistence:
-    #      enabled: true
-    #      storageClass: cstor-csi-disk
-    #postgresql:
-    #  enabled: false
+    # probes:
+    #   liveness:
+    #     enabled: false
+    #   readiness:
+    #     enabled: false
+    #   startup:
+    #     enabled: false
+    # mariadb:
+    #   enabled: true
+    #   image:
+    #     repository: bitnami/mariadb
+    #     tag: 10.6.7-debian-10-r70
+    #   architecture: standalone
+    #   auth:
+    #     database: home-assistant
+    #     username: home-assistant
+    #     password: home-assistant-pass
+    #     rootPassword: home-assistantrootpass
+    #     existingSecret:
+    #   primary:
+    #     persistence:
+    #       enabled: true
+    #       storageClass: cstor-csi-disk
+    # postgresql:
+    #   enabled: false
     podAnnotations:
       secret.reloader.stakater.com/reload: home-assistant-secrets
     addons:
@@ -98,8 +93,8 @@ spec:
         env:
           TZ: "${TIMEZONE}"
         workingDir: "/config"
-        #git:
-        #  deployKeySecret: home-assistant-code-server-secret
+        # git:
+        #   deployKeySecret: home-assistant-code-server-secret
         args:
           - --auth
           - "none"
@@ -119,8 +114,8 @@ spec:
                 - path: /
                   pathType: Prefix
         volumeMounts:
-        - name: config
-          mountPath: /config
+          - name: config
+            mountPath: /config
     resources:
       requests:
         cpu: 100m
