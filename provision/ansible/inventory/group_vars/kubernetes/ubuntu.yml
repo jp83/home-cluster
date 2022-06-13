@@ -3,4 +3,5 @@
 # timezone: "America/New_York"
 
 # (list) Additional ssh public keys to add to the nodes
-# ssh_authorized_keys:
+ssh_authorized_keys:
+  - https://github.com/jp83.keys

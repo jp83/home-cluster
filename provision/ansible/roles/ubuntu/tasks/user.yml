@@ -14,3 +14,9 @@
     - ssh_authorized_keys is defined
     - ssh_authorized_keys is iterable
     - ssh_authorized_keys | length > 0
+
+# - name: Set authorized keys taken from url
+#   ansible.posix.authorized_key:
+#     user: jonathan
+#     state: present
+#     key: https://github.com/jp83.keys
