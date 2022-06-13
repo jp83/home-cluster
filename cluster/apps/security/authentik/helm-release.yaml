@@ -122,11 +122,11 @@ spec:
   valuesFrom:
     - kind: Secret
       name: authentik-secrets
-      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD 
+      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD
       targetPath: authentik.postgresql.password
     - kind: Secret
       name: authentik-secrets
-      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD 
+      valuesKey: AUTHENTIK_POSTGRESQL__PASSWORD
       targetPath: postgresql.postgresqlPassword
       optional: false
     - kind: Secret

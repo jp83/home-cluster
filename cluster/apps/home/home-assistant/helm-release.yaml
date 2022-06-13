@@ -80,7 +80,7 @@ spec:
     #    username: home-assistant
     #    password: home-assistant-pass
     #    rootPassword: home-assistantrootpass
-    #    existingSecret: 
+    #    existingSecret:
     #  primary:
     #    persistence:
     #      enabled: true
