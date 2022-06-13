@@ -59,8 +59,8 @@ spec:
     - kustomize:
         patchesJson6902:
           - target:
-            kind: Ingress
-            name: k10-ingress
+              kind: Ingress
+              name: k10-ingress
             patch:
               - op: add
                 path: /spec/ingressClassName
