@@ -7,6 +7,13 @@ metadata:
 spec:
   pools:
     - nodeSelector:
+        kubernetes.io/hostname: "k3s-node-0"
+      dataRaidGroups:
+        - blockDevices:
+            - blockDeviceName: "blockdevice-ad9fb31fb53d9165150eeea2dea6cf49"
+      poolConfig:
+        dataRaidGroupType: "stripe"
+    - nodeSelector:
         kubernetes.io/hostname: "k3s-node-1"
       dataRaidGroups:
         - blockDevices:
