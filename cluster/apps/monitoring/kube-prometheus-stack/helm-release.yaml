@@ -25,10 +25,10 @@ spec:
   values:
     fullnameOverride: prom-stack
     nodeExporter:
-    tolerations:
-      - key: "thin-client"
-        operator: "Exists"
-        effect: "NoExecute"
+      tolerations:
+        - key: "thin-client"
+          operator: "Exists"
+          effect: "NoExecute"
     alertmanager:
       config:
         global:
