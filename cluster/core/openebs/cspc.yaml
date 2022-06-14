@@ -6,13 +6,13 @@ metadata:
   namespace: openebs
 spec:
   pools:
-    - nodeSelector:
-        kubernetes.io/hostname: "k3s-node-0"
-      dataRaidGroups:
-        - blockDevices:
-            - blockDeviceName: "blockdevice-5a2b6c7ab5f87ebfbc63d229bcc2a646"
-      poolConfig:
-        dataRaidGroupType: "stripe"
+    # - nodeSelector:
+    #     kubernetes.io/hostname: "k3s-node-0"
+    #   dataRaidGroups:
+    #     - blockDevices:
+    #         - blockDeviceName: "blockdevice-5a2b6c7ab5f87ebfbc63d229bcc2a646"
+    #   poolConfig:
+    #     dataRaidGroupType: "stripe"
     - nodeSelector:
         kubernetes.io/hostname: "k3s-node-1"
       dataRaidGroups:
