@@ -109,7 +109,7 @@ spec:
         hosts:
           - "alert-manager.${SECRET_DOMAIN}"
       alertmanagerSpec:
-        replicas: 2
+        replicas: 1
         podAntiAffinity: hard
         storage:
           volumeClaimTemplate:
