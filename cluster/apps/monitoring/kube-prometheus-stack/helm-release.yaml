@@ -24,7 +24,7 @@ spec:
       retries: 5
   values:
     fullnameOverride: prom-stack
-    nodeExporter:
+    prometheus-node-exporter:
       tolerations:
         - key: "thin-client"
           operator: "Exists"
