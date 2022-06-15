@@ -24,10 +24,10 @@ spec:
       retries: 5
   values:
     fullnameOverride: prom-stack
-    # prometheus-node-exporter:
-    #   tolerations:
-    #     - effect: NoSchedule
-    #       operator: Exists
+    prometheus-node-exporter:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
     #     - key: "thin-client"
     #       operator: "Exists"
     #       effect: "NoExecute"
