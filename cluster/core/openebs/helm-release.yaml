@@ -24,6 +24,5 @@ spec:
         tolerations:
           - key: "thin-client"
             operator: "Exists"
-            effect: "NoExecute"
     openebs-ndm:
       enabled: true

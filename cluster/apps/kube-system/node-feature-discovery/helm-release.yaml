@@ -31,7 +31,6 @@ spec:
       tolerations:
         - key: "thin-client"
           operator: "Exists"
-          effect: "NoExecute"
       config:
         core:
           sources:

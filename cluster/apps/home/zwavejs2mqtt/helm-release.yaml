@@ -72,7 +72,6 @@ spec:
     tolerations:
       - key: "thin-client"
         operator: "Exists"
-        effect: "NoExecute"
     resources:
       requests:
         cpu: 100m
