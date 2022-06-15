@@ -29,7 +29,7 @@ spec:
         - key: "thin-client"
           operator: "Exists"
           effect: "NoExecute"
-        - effect: "NoSchedule"
+        - key: "node-role.kubernetes.io/master"
           operator: "Exists"
     alertmanager:
       config:
