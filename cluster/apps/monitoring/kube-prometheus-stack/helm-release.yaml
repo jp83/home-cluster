@@ -26,11 +26,11 @@ spec:
     fullnameOverride: prom-stack
     prometheus-node-exporter:
       tolerations:
+        - effect: NoSchedule
+          operator: Exists
         - key: "thin-client"
           operator: "Exists"
           effect: "NoExecute"
-        - key: "node-role.kubernetes.io/master"
-          operator: "Exists"
     alertmanager:
       config:
         global:
