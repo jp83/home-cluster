@@ -152,31 +152,31 @@ spec:
     kubeApiServer:
       enabled: true
     kubeControllerManager:
-      enabled: false
+      enabled: true
       endpoints:
         - 192.168.2.85
         - 192.168.2.86
         - 192.168.2.77
       service:
-        enabled: false
+        enabled: true
         port: 10257
         targetPort: 10257
       serviceMonitor:
-        enabled: false
+        enabled: true
         https: true
         insecureSkipVerify: true
     kubeScheduler:
-      enabled: false
+      enabled: true
       endpoints:
         - 192.168.2.85
         - 192.168.2.86
         - 192.168.2.77
       service:
-        enabled: false
+        enabled: true
         port: 10259
         targetPort: 10259
       serviceMonitor:
-        enabled: false
+        enabled: true
         https: true
         insecureSkipVerify: true
     kubeProxy:
