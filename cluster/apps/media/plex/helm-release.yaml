@@ -68,7 +68,7 @@ spec:
           dlna-udp:
             enabled: true
             port: 1900
-            protocol: TCP
+            protocol: UDP
             targetPort: 1900
         externalTrafficPolicy: Local
     ingress:
