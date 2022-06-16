@@ -46,8 +46,7 @@ spec:
             protocol: TCP
             port: 3493
         type: LoadBalancer
-        externalIPs:
-          - "${METALLB_NUT_ADDR}"
+        loadBalancerIP: "${METALLB_NUT_ADDR}"
         externalTrafficPolicy: Local
     # The main configuration files for network-ups-tools
     config:
@@ -147,8 +146,6 @@ spec:
             - matchExpressions:
                 - key: feature.node.kubernetes.io/custom-ups
                   operator: DoesNotExist
-                  values:
-                    - "true"
     # The main configuration files for network-ups-tools
     config:
       # If set to 'values', the configuration will be read from these values.
