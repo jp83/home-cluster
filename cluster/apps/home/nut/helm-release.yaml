@@ -133,8 +133,8 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
       tag: v2.8.0
-    securityContext:
-      privileged: true
+    # securityContext:
+    #   privileged: true
     controllerType: daemonset
     tolerations:
       - key: "thin-client"
@@ -146,6 +146,13 @@ spec:
             - matchExpressions:
                 - key: feature.node.kubernetes.io/custom-ups
                   operator: DoesNotExist
+    service:
+      main:
+        ports:
+          http:
+            enabled: false
+          server:
+            enabled: false
     # The main configuration files for network-ups-tools
     config:
       # If set to 'values', the configuration will be read from these values.
