@@ -161,7 +161,7 @@ spec:
           ALLOW_NO_DEVICE=true
 
         upsmon.conf: |
-          MONITOR ups-1@nut-master.home.svc.cluster.local 1 upsmon secret slave
+          MONITOR ups-1@nut-master-network-ups-tools.home.svc.cluster.local 1 upsmon secret slave
           # DEADTIME 25
           # MAXAGE 25
           SHUTDOWNCMD "/usb/bin/logger Simulated Shutdown"
