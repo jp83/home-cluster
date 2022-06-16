@@ -26,8 +26,8 @@ spec:
     worker:
       annotations:
         configmap.reloader.stakater.com/reload: node-feature-discovery-worker-conf
-      #nodeSelector:
-      #  node-role.kubernetes.io/worker: "true"
+      # nodeSelector:
+      #   node-role.kubernetes.io/worker: "true"
       tolerations:
         - key: "thin-client"
           operator: "Exists"
@@ -55,13 +55,16 @@ spec:
             - name: zwave
               matchOn:
                 - usbId:
-                    #class: ["02"]
                     vendor: ["10c4"]
-                    #device: ["0200"]
+                    # device: ["8a2a"]
+            - name: ups
+              matchOn:
+                - usbId:
+                    vendor: ["051d"]
+                    # device: ["0002"]
             - name: rtl-sdr
               matchOn:
                 - usbId:
-                    #class: ["02"]
                     vendor: ["0bda"]
                     device: ["2838"]
             - name: intel-gpu
