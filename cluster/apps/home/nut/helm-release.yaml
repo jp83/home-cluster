@@ -153,12 +153,12 @@ spec:
       mode: values
       # See https://github.com/networkupstools/nut/tree/master/conf for config sample files
       files:
-        dummy-ups.dev: |
-          # nothing
-
         nut.conf: |
           MODE=netclient
           ALLOW_NO_DEVICE=true
+
+        dummy-ups.dev: |
+          # nothing
 
         upsmon.conf: |
           MONITOR ups-1@nut-master-network-ups-tools.home.svc.cluster.local 1 upsmon secret slave
