@@ -159,6 +159,7 @@ spec:
         nut.conf: |
           MODE=netclient
           ALLOW_NO_DEVICE=false
+          export ALLOW_NO_DEVICE
 
         dummy-ups.dev: |
           # nothing
@@ -177,13 +178,13 @@ spec:
           # DEADTIME 25
           # MAXAGE 25
           SHUTDOWNCMD "/usb/bin/logger Simulated Shutdown"
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
+    # probes:
+    #   liveness:
+    #     enabled: false
+    #   readiness:
+    #     enabled: false
+    #   startup:
+    #     enabled: false
     resources:
       requests:
         memory: 64Mi
