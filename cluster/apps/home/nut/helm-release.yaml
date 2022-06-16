@@ -148,12 +148,7 @@ spec:
                   operator: DoesNotExist
     service:
       main:
-        ports:
-          http:
-            enabled: false
-          server:
-            enabled: false
-            port: 3493
+        enabled: false
     # The main configuration files for network-ups-tools
     config:
       # If set to 'values', the configuration will be read from these values.
