@@ -153,6 +153,9 @@ spec:
       mode: values
       # See https://github.com/networkupstools/nut/tree/master/conf for config sample files
       files:
+        dummy-ups.dev: |
+          # nothing
+
         nut.conf: |
           MODE=netclient
           ALLOW_NO_DEVICE=true
