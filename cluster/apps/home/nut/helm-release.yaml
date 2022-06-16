@@ -160,6 +160,12 @@ spec:
           MODE=netclient
           ALLOW_NO_DEVICE=true
 
+        ups.conf: |
+          [dummy]
+            driver = dummy-ups
+            port = dummy-ups.dev
+            desc = "dummy-ups in dummy mode"
+
         upsmon.conf: |
           MONITOR ups-1@nut-master.home.svc.cluster.local 1 upsmon secret slave
           # DEADTIME 25
