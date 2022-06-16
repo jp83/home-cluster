@@ -131,8 +131,11 @@ spec:
 
   values:
     image:
-      repository: ghcr.io/k8s-at-home/network-ups-tools
-      tag: v2.8.0
+      # repository: ghcr.io/k8s-at-home/network-ups-tools
+      # tag: v2.8.0
+      repository: cdeadspine/nut #check todo waiting pull request k8sathome/network-ups-tools
+      tag: test #check todo waiting pull request v2.7.4-2124-g9defa7a9
+      pullPolicy: Always #todo IfNotPresent
     # securityContext:
     #   privileged: true
     controllerType: daemonset
