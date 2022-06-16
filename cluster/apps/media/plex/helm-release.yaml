@@ -36,13 +36,41 @@ spec:
     #     - 109
     service:
       main:
+        primary: true
         type: LoadBalancer
         loadBalancerIP:: "${METALLB_PLEX_ADDR}"
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: plex
-        port:
-          port: 32400
+        ports:
+          http:
+            port: 32400
+      dlna-tcp:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP:: "${METALLB_PLEX_ADDR}"
+        annotations:
+          metallb.universe.tf/allow-shared-ip: plex
+        ports:
+          dlna-tcp:
+            enabled: true
+            port: 32469
+            protocol: TCP
+            targetPort: 32469
+        externalTrafficPolicy: Local
+      dlna-udp:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP:: "${METALLB_PLEX_ADDR}"
+        annotations:
+          metallb.universe.tf/allow-shared-ip: plex
+        ports:
+          dlna-udp:
+            enabled: true
+            port: 1900
+            protocol: TCP
+            targetPort: 1900
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
