@@ -163,6 +163,15 @@ spec:
         dummy-ups.dev: |
           # nothing
 
+        ups.conf: |
+          [dummy]
+            driver = dummy-ups
+            port = dummy-ups.dev
+            desc = "dummy-ups in dummy mode"
+
+        upsd.conf: |
+          LISTEN 0.0.0.0
+
         upsmon.conf: |
           MONITOR ups-1@nut-master-network-ups-tools.home.svc.cluster.local 1 upsmon secret slave
           # DEADTIME 25
