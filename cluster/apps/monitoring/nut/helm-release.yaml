@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nut-master
-  namespace: home
+  namespace: monitoring
 spec:
   interval: 5m
   chart:
@@ -25,7 +25,8 @@ spec:
       privileged: true
     controllerType: daemonset
     tolerations:
-      - key: "thin-client"
+      # - key: "thin-client"
+      - effect: NoSchedule
         operator: "Exists"
     affinity:
       nodeAffinity:
@@ -80,9 +81,6 @@ spec:
 
         upsmon.conf: |
           MONITOR ups-1@localhost 1 admin secret master
-          # DEADTIME 25
-          # MAXAGE 25
-          SHUTDOWNCMD "/usb/bin/logger Simulated Shutdown"
 
     resources:
       requests:
@@ -108,89 +106,3 @@ spec:
         scrapeTimeout: 10s
       prometheusRule:
         enabled: true
-
-
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: nut-slave
-  namespace: home
-spec:
-  interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: network-ups-tools
-      version: 6.3.3
-      sourceRef:
-        kind: HelmRepository
-        name: k8s-at-home-charts
-        namespace: flux-system
-      interval: 5m
-
-  values:
-    image:
-      # repository: ghcr.io/k8s-at-home/network-ups-tools
-      # tag: v2.8.0
-      repository: cdeadspine/nut #check todo waiting pull request k8sathome/network-ups-tools
-      tag: test #check todo waiting pull request v2.7.4-2124-g9defa7a9
-      pullPolicy: Always #todo IfNotPresent
-    # securityContext:
-    #   privileged: true
-    controllerType: daemonset
-    tolerations:
-      - key: "thin-client"
-        operator: "Exists"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: feature.node.kubernetes.io/custom-ups
-                  operator: DoesNotExist
-    service:
-      main:
-        enabled: false
-    # The main configuration files for network-ups-tools
-    config:
-      # If set to 'values', the configuration will be read from these values.
-      # Otherwise you have to mount a volume to /etc/nut containing the configuration files.
-      mode: values
-      # See https://github.com/networkupstools/nut/tree/master/conf for config sample files
-      files:
-        nut.conf: |
-          MODE=netclient
-          ALLOW_NO_DEVICE=false
-          export ALLOW_NO_DEVICE
-
-        dummy-ups.dev: |
-          # nothing
-
-        ups.conf: |
-          [dummy]
-            driver = dummy-ups
-            port = dummy-ups.dev
-            desc = "dummy-ups in dummy mode"
-
-        upsd.conf: |
-          LISTEN 0.0.0.0
-
-        upsmon.conf: |
-          MONITOR ups-1@nut-master-network-ups-tools.home.svc.cluster.local 1 upsmon secret slave
-          # DEADTIME 25
-          # MAXAGE 25
-          SHUTDOWNCMD "/usb/bin/logger Simulated Shutdown"
-    # probes:
-    #   liveness:
-    #     enabled: false
-    #   readiness:
-    #     enabled: false
-    #   startup:
-    #     enabled: false
-    resources:
-      requests:
-        memory: 64Mi
-        cpu: 25m
-      limits:
-        memory: 128Mi
