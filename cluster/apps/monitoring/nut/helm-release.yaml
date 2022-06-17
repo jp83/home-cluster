@@ -64,7 +64,7 @@ spec:
             driver = usbhid-ups
             port = auto
             # pollinterval = 15
-            desc = APC Back-UPS Pro 1500
+            desc = "APC Back-UPS Pro 1500"
 
         upsd.conf: |
           LISTEN 0.0.0.0
