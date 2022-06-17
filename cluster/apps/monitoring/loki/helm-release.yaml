@@ -18,20 +18,20 @@ spec:
   install:
     createNamespace: true
   values:
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
-      hosts:
-        - host: "loki.${SECRET_DOMAIN}"
-          paths:
-            - /
+    # ingress:
+    #   enabled: true
+    #   ingressClassName: "traefik"
+    #   annotations:
+    #     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    #     traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+    #   hosts:
+    #     - host: "loki.${SECRET_DOMAIN}"
+    #       paths:
+    #         - /
     persistence:
       enabled: true
       storageClassName: cstor-csi-disk
-      size: 20Gi
+      size: 10Gi
     serviceMonitor:
       enabled: true
     # extraArgs:
