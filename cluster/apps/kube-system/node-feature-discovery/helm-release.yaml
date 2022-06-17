@@ -26,10 +26,9 @@ spec:
     worker:
       annotations:
         configmap.reloader.stakater.com/reload: node-feature-discovery-worker-conf
-      # nodeSelector:
-      #   node-role.kubernetes.io/worker: "true"
       tolerations:
-        - key: "thin-client"
+        # - key: "thin-client"
+        - effect: NoSchedule
           operator: "Exists"
       config:
         core:
