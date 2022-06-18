@@ -67,16 +67,16 @@ spec:
             port = auto
             # pollinterval = 15
             desc = "APC Back-UPS Pro 1500"
-          [ups-2]
-            driver = snmp-ups
-            privProtocol=AES
-            port = 192.168.3.82
-            desc = "APC Smart-UPS 750"
-          [ups-3]
-            driver = snmp-ups
-            privProtocol=AES
-            port = 192.168.3.83
-            desc = "APC Smart-UPS 750"
+          # [ups-2]
+          #   driver = snmp-ups
+          #   privProtocol=AES
+          #   port = 192.168.3.82
+          #   desc = "APC Smart-UPS 750"
+          # [ups-3]
+          #   driver = snmp-ups
+          #   privProtocol=AES
+          #   port = 192.168.3.83
+          #   desc = "APC Smart-UPS 750"
 
         upsd.conf: |
           LISTEN 0.0.0.0
