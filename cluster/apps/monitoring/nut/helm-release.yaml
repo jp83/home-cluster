@@ -28,6 +28,8 @@ spec:
       # - key: "thin-client"
       - effect: NoSchedule
         operator: "Exists"
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "nut-master-network-ups-tools-config"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
