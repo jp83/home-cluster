@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   name: openebs
   labels:
-    goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/enabled: "false"
