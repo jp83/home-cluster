@@ -20,7 +20,8 @@ spec:
   values:
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
-      tag: v2.8.0
+      # tag: v2.8.0
+      tag: v2.7.4-2479-g86a32237
     securityContext:
       privileged: true
     controllerType: daemonset
@@ -68,6 +69,12 @@ spec:
             port = auto
             # pollinterval = 15
             desc = "APC Back-UPS Pro 1500"
+              vendorid = "051D"
+            productid = "0002"
+            product = "Back-UPS RS 1500G FW:865.L9 .D USB FW:L9"
+            serial = "4B2107P01305"
+            vendor = "American Power Conversion"
+            bus = "001"
           # [ups-2]
           #   driver = snmp-ups
           #   privProtocol=AES
@@ -94,6 +101,11 @@ spec:
 
         upsmon.conf: |
           MONITOR ups-1@localhost 1 admin secret master
+          SHUTDOWNCMD "/sbin/shutdown -h +0"
+          POWERDOWNFLAG /etc/killpower
+          POLLFREQ 15
+          POLLFREQALERT 5
+          HOSTSYNC 15
 
     resources:
       requests:
