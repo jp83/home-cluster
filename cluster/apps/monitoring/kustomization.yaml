@@ -7,6 +7,6 @@ resources:
   - influxdb
   - kube-prometheus-stack
   - loki
-  - nut
-#  - thanos
+  # - nut
+  # - thanos
   - vpa
