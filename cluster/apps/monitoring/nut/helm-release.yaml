@@ -70,7 +70,7 @@ spec:
             desc = "APC Back-UPS Pro 1500"
             # vendorid = "051D"
             # productid = "0002"
-            # product = "Back-UPS RS 1500G FW:865.L9 .D USB FW:L9"
+            product = "Back-UPS RS 1500G FW:865.L9 .D USB FW:L9"
             serial = "4B2107P01305"
             # vendor = "American Power Conversion"
             # bus = "001"
