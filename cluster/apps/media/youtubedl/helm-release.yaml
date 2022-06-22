@@ -58,7 +58,7 @@ spec:
         enabled: true
         existingClaim: nfs-media-pvc
         mountPath: /app/video
-        subPath: Downloads/YoutubeDL
+        subPath: YoutubeDL
     resources:
       requests:
         cpu: 100m
