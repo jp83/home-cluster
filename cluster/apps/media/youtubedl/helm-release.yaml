@@ -31,10 +31,10 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          # external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
-          # external-dns/is-public: "true"
+          external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
+          external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+          # traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - host: "youtubedl.${SECRET_DOMAIN}"
             paths:
@@ -54,11 +54,11 @@ spec:
         storageClass: cstor-csi-disk
         # mountPath: /app/appdata
         size: 5Gi
-      media:
+      video:
         enabled: true
         existingClaim: nfs-media-pvc
-        # mountPath: /mnt/media
-        # subPath: Downloads
+        mountPath: /app/video
+        subPath: Downloads
     resources:
       requests:
         cpu: 100m
