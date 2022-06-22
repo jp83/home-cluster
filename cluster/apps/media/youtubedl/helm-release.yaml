@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: youtubedl
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: youtubedl-material
+      version: 4.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: tzahi12345/youtubedl-material
+      tag: "4.2"
+    env:
+      TZ: "${TIMEZONE}"
+      # UID: ${NFS_USER_ID}
+      # GID: ${NFS_GROUP_ID}
+    ingress:
+      dashboard:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          # external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
+          # external-dns/is-public: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+        hosts:
+          - host: "youtubedl.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: "youtubedl.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: "youtubedl.home.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+    persistence:
+      config:
+        enabled: true
+        storageClass: cstor-csi-disk
+        # mountPath: /app/appdata
+        size: 5Gi
+      media:
+        enabled: true
+        existingClaim: nfs-media-pvc
+        # mountPath: /mnt/media
+        # subPath: Downloads
+    resources:
+      requests:
+        cpu: 100m
+        memory: 500Mi
+      limits:
+        memory: 500Mi
