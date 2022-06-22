@@ -1,0 +1,63 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tubesync
+  namespace: home
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kah-common-chart
+      version: 1.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: ghcr.io/meeb/tubesync
+      # tag: "v0.10.0"
+    env:
+      TZ: "${TIMEZONE}"
+      UID: 8675309
+      GID: 8675309
+    service:
+      main:
+      ports:
+        http:
+          port: 4848
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+        #   external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
+        #   external-dns/is-public: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+        hosts:
+          - host: "esphome.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+    persistence:
+      config:
+        enabled: true
+        storageClass: cstor-csi-disk
+        # mountPath: /config
+        size: 5Gi
+      downloads:
+        enabled: true
+        existingClaim: nfs-media-pvc
+        # mountPath: /downloads
+        subPath: YoutubeDL
+    resources:
+      requests:
+        cpu: 100m
+        memory: 500Mi
+      limits:
+        memory: 1000Mi
