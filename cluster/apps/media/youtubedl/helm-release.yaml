@@ -24,8 +24,8 @@ spec:
       tag: "4.2"
     env:
       TZ: "${TIMEZONE}"
-      # UID: ${NFS_USER_ID}
-      # GID: ${NFS_GROUP_ID}
+      UID: 8675309
+      GID: 8675309
     ingress:
       dashboard:
         enabled: true
@@ -58,7 +58,7 @@ spec:
         enabled: true
         existingClaim: nfs-media-pvc
         mountPath: /app/video
-        subPath: Downloads
+        subPath: Downloads/YoutubeDL
     resources:
       requests:
         cpu: 100m
