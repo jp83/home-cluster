@@ -66,6 +66,10 @@ spec:
         existingClaim: nfs-media-pvc
         mountPath: /app/video
         subPath: YoutubeDL
+    startupProbe:
+      enabled: true
+      failureThreshold: 20
+      periodSeconds: 10
     resources:
       requests:
         cpu: 100m
