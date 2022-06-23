@@ -21,7 +21,8 @@ spec:
   values:
     image:
       repository: tzahi12345/youtubedl-material
-      tag: "4.2"
+      # tag: "4.2"
+      tag: "nightly-2022-06-22"
     env:
       TZ: "${TIMEZONE}"
       # UID: 8675309
