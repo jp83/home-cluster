@@ -5,16 +5,17 @@ metadata:
   name: tubesync
   namespace: media
 spec:
-  interval: 15m
+  interval: 5m
   chart:
     spec:
-      chart: kah-common-chart
-      version: 1.1.2
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: youtubedl-material
+      version: 4.3.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
         namespace: flux-system
-      interval: 15m
+      interval: 5m
   install:
     createNamespace: true
   values:
