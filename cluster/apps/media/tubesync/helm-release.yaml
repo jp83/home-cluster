@@ -21,6 +21,7 @@ spec:
   values:
     image:
       repository: ghcr.io/meeb/tubesync
+      tag: "latest"
       # tag: "v0.10.0"
     env:
       TZ: "${TIMEZONE}"
