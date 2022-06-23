@@ -24,8 +24,8 @@ spec:
       tag: "4.2"
     env:
       TZ: "${TIMEZONE}"
-      UID: 8675309
-      GID: 8675309
+      # UID: 8675309
+      # GID: 8675309
     ingress:
       dashboard:
         enabled: true
