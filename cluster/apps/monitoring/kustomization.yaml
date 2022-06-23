@@ -9,4 +9,5 @@ resources:
   - loki
   # - nut
   # - thanos
+  - uptime
   - vpa
