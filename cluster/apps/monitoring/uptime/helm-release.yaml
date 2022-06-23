@@ -54,10 +54,10 @@ spec:
     persistence:
       data:
         enabled: true
-        # existingClaim: uptime-data
-        storageClass: cstor-csi-disk
+        existingClaim: uptime-data
+        # storageClass: cstor-csi-disk
         mountPath: /app/data
-        size: 5Gi
+        # size: 5Gi
     resources:
       requests:
         memory: 100Mi
