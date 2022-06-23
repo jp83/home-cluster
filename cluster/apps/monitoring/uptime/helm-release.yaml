@@ -44,10 +44,20 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          external-dns.alpha.kubernetes.io/target: "home.${SECRET_ROOT_DOMAIN}"
+          external-dns/is-public: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
+          # traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-only@kubernetescrd"
         hosts:
           - host: uptime.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: "uptime.${SECRET_ROOT_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: "uptime.home.${SECRET_ROOT_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
