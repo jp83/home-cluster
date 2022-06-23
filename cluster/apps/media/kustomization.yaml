@@ -12,5 +12,5 @@ resources:
   - readarr
   - sonarr
   - trunk-recorder
-  - tubesync
+  # - tubesync
   - youtubedl
