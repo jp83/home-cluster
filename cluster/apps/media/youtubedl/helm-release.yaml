@@ -69,7 +69,6 @@ spec:
     probes:
       startup:
         enabled: true
-        custom: true
         spec:
           failureThreshold: 20
           periodSeconds: 10
