@@ -22,8 +22,10 @@ spec:
       namespace: kube-system
   values:
     image:
-      repository: ghcr.io/zwave-js/zwavejs2mqtt
-      tag: 7.2.0
+      # repository: ghcr.io/zwave-js/zwavejs2mqtt
+      # tag: 7.2.0
+      repository: zwave-js/zwave-js-ui
+      tag: 8.5.1
     env:
       TZ: "${TIMEZONE}"
     service:
