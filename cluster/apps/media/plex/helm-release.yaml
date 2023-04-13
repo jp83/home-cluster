@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: plex
-      version: 6.3.2
+      version: 6.4.3
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -19,8 +19,8 @@ spec:
     createNamespace: true
   values:
     image:
-      repository: ghcr.io/k8s-at-home/plex
-      tag: v1.29.2.6364-6d72b0cf6
+      repository: plexinc/pms-docker
+      tag: 1.31.3.6868-28fc46b276
     env:
       TZ: "${TIMEZONE}"
       # ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
