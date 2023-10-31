@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: plexinc/pms-docker
-      tag: 1.32.6.7468-07e0d4a7e
+      tag: 1.32.7.7621-871adbd44
     env:
       TZ: "${TIMEZONE}"
       # ADVERTISE_IP: "http://${LB_PLEX_IP}:32400/"
